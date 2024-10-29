@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết phiếu mượn</title>
+</head>
+<body>
+    <h1>Thông tin chi tiết phiếu mượn</h1>
+    <div id="details"></div>
+    <script>
+        const phone = new URLSearchParams(window.location.search).get('phone');
+        const data = JSON.parse(localStorage.getItem(phone));
+        if (data) {
+            const { readerName, phone, borrowDate, notes, books } = data;
+            const details = `<p><strong>Tên độc giả:</strong> ${readerName}</p>
+                             <p><strong>Số điện thoại:</strong> ${phone}</p>
+                             <p><strong>Ngày mượn sách:</strong> ${borrowDate}</p>
+                             <p><strong>Ghi chú:</strong> ${notes}</p>
+                             <table>${books.map(b => `<tr><td>${b.bookName}</td><td>${b.borrowDuration}</td></tr>`).join('')}</table>`;
+            document.getElementById('details').innerHTML = details;
+        }
+    </script>
+
+</body>
+</html>

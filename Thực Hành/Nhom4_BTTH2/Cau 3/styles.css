@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.header {
+    font-size: 14px;
+    color: blue;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #000;
+    text-align: center;
+}
+
+th {
+    background-color: #0033cc;
+    color: #cccc99;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.remove-btn {
+    background-color: #ff3333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.remove-btn:hover {
+    background-color: #cc0000;
+}
+
+.total {
+    font-weight: bold;
+    margin-top: 10px;
+}

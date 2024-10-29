@@ -1,0 +1,44 @@
+/* Cơ bản */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+/* Tiêu đề */
+h1 {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+/* Biểu mẫu */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Nhãn và các mục nhập */
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* Nút */
+button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: grey;
+}

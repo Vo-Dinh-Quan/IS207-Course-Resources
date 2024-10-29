@@ -1,0 +1,50 @@
+/* General styling for the menu */
+.menu {
+    background-color: #00008B;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 1170px;
+margin: auto;
+    justify-content: space-around;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    display: block;
+    padding: 15px;
+    color: #FFD700;
+    text-decoration: none;
+    text-align: center;
+}
+
+.menu a:hover {
+    background-color: #ADFF2F;
+}
+
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    background-color: #00008B;
+}
+
+.submenu li a {
+    width: 150px;
+}
+
+.submenu li a:hover {
+    background-color: lightblue;
+}
+
+.dropdown:hover .submenu {
+    display: block;
+}

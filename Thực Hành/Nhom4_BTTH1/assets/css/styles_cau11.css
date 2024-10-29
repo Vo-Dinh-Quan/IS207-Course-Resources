@@ -1,0 +1,104 @@
+/* General container styling */
+.container {
+    width: 60%;
+    margin: 0 auto;
+    border: 2px solid green;
+}
+
+/* Header styling */
+.header {
+    padding: 20px;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.header h1 {
+    display: inline-block;
+    margin: 0;
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+/* Navigation bar styling */
+.navbar {
+    background-color: #00990d; /* Dark blue background for the navbar */
+    overflow: hidden;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    color: #FFD700; /* Gold text color */
+    font-weight: bold;
+    text-align: center;
+    background-color: #00990d; /* Dark blue */
+}
+
+.navbar ul li a:hover {
+    background-color: #ADFF2F; /* Light green when hovered */
+}
+
+/* Main content section */
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.content__box {
+    flex: 3;
+    border: 2px solid blue;
+    padding: 10px;
+    margin-right: 20px;
+    text-align: center; /* Center content horizontally */
+}
+
+.box {
+    border: 2px solid red;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center; /* Center content within the box */
+}
+
+.right-align {
+    text-align: right;
+}
+
+/* Box Info on the right side */
+.box-info {
+    flex: 1;
+    border: 2px solid red;
+    padding: 10px;
+    text-align: center;
+    background-color: lightblue;
+}
+
+/* Footer styling */
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-top: 2px solid green;
+}

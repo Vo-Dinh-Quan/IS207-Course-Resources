@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính Lương Tháng</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <table border="1" style="border-collapse: collapse; width: 300px; background-color: #FFD39B;">
+        <tr>
+            <td>Lương</td>
+            <td><input type="number" id="luong" value="1000000" /></td>
+        </tr>
+        <tr>
+            <td>Hệ số lương</td>
+            <td>
+                <select id="heSoLuong">
+                    <option value="1.0">1.0</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2.0">2.0</option>
+                    <option value="2.5">2.5</option>
+                    <option value="3.0">3.0</option>
+                    <option value="3.2" selected>3.2</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <button id="tinhLuong">Tính lương tháng</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Lương tháng</td>
+            <td><input type="text" id="luongThang" readonly /></td>
+        </tr>
+    </table>
+
+    <script>
+        $(document).ready(function(){
+            $('#tinhLuong').click(function(){
+                var luong = parseFloat($('#luong').val());
+                var heSoLuong = parseFloat($('#heSoLuong').val());
+                var luongThang = luong * heSoLuong;
+                $('#luongThang').val(luongThang);
+            });
+        });
+    </script>
+</body>
+</html>

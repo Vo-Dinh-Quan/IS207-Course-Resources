@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Phiếu Mượn Sách</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Thông tin phiếu mượn sách</h1>
+        <form id="bookForm">
+            <label>Họ tên độc giả:</label><input id="readerName" required />
+            <label>Số điện thoại:</label><input id="phone" required />
+            <label>Ngày mượn:</label
+            ><input type="date" id="borrowDate" required />
+            <div id="bookContainer">
+                <select>
+                    <option class="7day" value="Nexus">Nexus</option>
+                    <option class="14day" value="Bố già">Bố già</option>
+                    <option class="21day" value="Kafka bên bờ biển">
+                        Kafka bên bờ biển
+                    </option>
+                </select>
+            </div>  
+            <button id="addBookBtn" type="button">Thêm sách mượn</button>
+            <textarea id="notes"></textarea>
+            <button class="submit">Thêm</button>
+        </form>
+        <script src="script.js"></script>
+    </body>
+</html>

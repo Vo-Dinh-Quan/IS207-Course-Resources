@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Đăng Ký Tour Du Lịch</title>
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <h2>Phiếu đăng ký tour du lịch</h2>
+        <form id="tourForm">
+            <table>
+                <tr>
+                    <td>Họ và tên khách</td>
+                    <td>
+                        <input
+                            type="text"
+                            id="customerName"
+                            value="Nguyễn Văn A"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ</td>
+                    <td>
+                        <input
+                            type="text"
+                            id="address"
+                            placeholder="abc, xyz, jqk"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Điện thoại</td>
+                    <td>
+                        <input
+                            type="text"
+                            id="phone"
+                            placeholder="09xxxxxxxx"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tour</td>
+                    <td>
+                        <select id="tourSelect">
+                            <option value="0">Chọn tour</option>
+                            <option value="10000000">
+                                Hà Nội - Hạ Long - Tuần Châu
+                            </option>
+                            <option value="6000000">Hà Nội - Sapa</option>
+                            <option value="3000000">Đà Nẵng - Hội An</option>
+                            <option value="2000000">
+                                Buôn Mê Thuột - Kon Tum
+                            </option>
+                            <option value="3500000">TP.HCM - Nha Trang</option>
+                            <option value="2500000">
+                                TP.HCM - Cần Thơ - Cà Mau
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">Số lượng đoàn khách</td>
+                </tr>
+                <tr>
+                    <td>Người lớn</td>
+                    <td>
+                        <input
+                            type="number"
+                            id="adultCount"
+                            value="1"
+                            min="0"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Trẻ em</td>
+                    <td>
+                        <input
+                            type="number"
+                            id="childCount"
+                            value="0"
+                            min="0"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ghi chú</td>
+                    <td><textarea id="note" rows="3"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center">
+                        <button type="button" id="registerBtn">Đăng ký</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

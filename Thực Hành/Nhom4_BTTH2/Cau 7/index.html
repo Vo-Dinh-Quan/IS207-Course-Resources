@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Đăng Ký CV</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <h2>Đăng ký CV</h2>
+        <form id="cvForm">
+            <table>
+                <tr>
+                    <td>Họ và tên</td>
+                    <td>
+                        <input type="text" id="name" value="Nguyễn Văn C" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ</td>
+                    <td><input type="text" id="address" value="TP.HCM" /></td>
+                </tr>
+                <tr>
+                    <td>Điện thoại</td>
+                    <td><input type="text" id="phone" value="0900000000" /></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>
+                        <input type="email" id="email" value="ex@mail.com" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nghề nghiệp</td>
+                    <td><input type="text" id="job" value="Designer" /></td>
+                </tr>
+                <tr>
+                    <td>Ảnh đại diện</td>
+                    <td><input type="file" id="avatar" /></td>
+                </tr>
+                <tr>
+                    <td>Kỹ năng</td>
+                    <td>
+                        <div id="skillsContainer">
+                            <div class="skill">
+                                <input
+                                    type="text"
+                                    class="skill-name"
+                                    placeholder="Tên kỹ năng"
+                                    value="Node JS"
+                                />
+                                <input
+                                    type="range"
+                                    class="skill-level"
+                                    min="0"
+                                    max="100"
+                                    step="10"
+                                    value="90"
+                                />
+                            </div>
+                        </div>
+                        <a href="#" id="addSkill">Thêm</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center">
+                        <button type="button" id="registerBtn">Đăng ký</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

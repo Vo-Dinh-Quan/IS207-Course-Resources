@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy tính</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            width: 350px;
+            padding: 20px;
+            margin: 0 auto;
+            background-color: lightblue;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+        }
+        .buttons {
+            text-align: center;
+        }
+        input[type="button"] {
+            width: 60px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Máy tính</h2>
+        <form>
+            <table>
+                <tr>
+                    <td><label for="so-thu-nhat">Số thứ nhất</label></td>
+                    <td><input type="text" id="so-thu-nhat" name="so-thu-nhat"></td>
+                </tr>
+                <tr>
+                    <td><label for="so-thu-hai">Số thứ hai</label></td>
+                    <td><input type="text" id="so-thu-hai" name="so-thu-hai"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="buttons">
+                        <input type="button" value="Cộng">
+                        <input type="button" value="Trừ">
+                        <input type="button" value="Nhân">
+                        <input type="button" value="Chia">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="ket-qua">Kết quả</label></td>
+                    <td><input type="text" id="ket-qua" name="ket-qua"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.header span {
+    font-size: 14px;
+    color: blue;
+}
+
+.cart-icon {
+    cursor: pointer;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.cart {
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+table, th, td {
+    padding: 8px;
+    text-align: center;
+}

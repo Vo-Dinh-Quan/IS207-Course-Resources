@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h2>Giỏ Hàng</h2>
+    <table id="cartTable">
+        <tr>
+            <th>Sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+            <th>Chức năng</th>
+        </tr>
+        <tr>
+            <td>IPhone 11 Pro Max 64GB</td>
+            <td><input type="number" class="quantity" value="2" min="1"></td>
+            <td><input type="text" class="price" value="31000000"></td>
+            <td class="subtotal">62000000</td>
+            <td><button class="deleteBtn">Xóa</button></td>
+        </tr>
+        <tr>
+            <td>Samsung Galaxy Note 10+</td>
+            <td><input type="number" class="quantity" value="1" min="1"></td>
+            <td><input type="text" class="price" value="16000000"></td>
+            <td class="subtotal">16000000</td>
+            <td><button class="deleteBtn">Xóa</button></td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: right; font-weight: bold;">Tổng tiền</td>
+            <td id="total">78000000</td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>

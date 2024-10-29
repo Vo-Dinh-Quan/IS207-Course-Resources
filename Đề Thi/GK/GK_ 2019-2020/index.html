@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Phiếu Mượn Sách</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header" style="margin-bottom: 20px; font-size: 14px;">
+        <span style="color: blue;">MSSV:<input type="text" id="mssv"></span>
+        <span style="color: blue;">Họ tên khách hàng <input type="text" id="tenKH"></span>
+        <span class="cart-icon" onclick="showCart()"> Giỏ hàng</span>
+    </div>
+
+    <div class="booklist" style="display: flex; gap: 20px;">
+        <div class="book">
+            <img src="./images/nhagiakim.png" alt="nha gia kim">
+            <p>Nha gia kim</p>
+            <p>Gia: 69000</p>
+            <button id="chonMua" onclick="addToCart('Nha gia kim', 69000)">Chon mua</button>
+        </div>
+        <div class="book">
+            <img src="./images/khoinghiep4.0.png" alt="khoi nghiep 4.0">
+            <p>Khoi nghiep 4.0</p>
+            <p>Gia: 139000</p>
+            <button id="chonMua" onclick="addToCart('Khoi nghiep 4.0', 139000)">Chon mua</button>
+        </div>
+        <div class="book">
+            <img src="./images/tuduyphanbien.png" alt="tuduyphanbien">
+            <p>Tu duy phan bien</p>
+            <p>Gia: 85000</p>
+            <button id="chonMua" onclick="addToCart('Tu duy phan bien', 85000)">Chon mua</button>
+        </div>
+        <div class="book">
+            <img src="./images/trenduongbang.png" alt="trenduongbang">
+            <p>Tren duong bang</p>
+            <p>Gia: 80000</p>
+            <button id="chonMua" onclick="addToCart('Tren duong bang', 80000)">Chon mua</button>
+        </div>
+
+        <div class="book">
+            <img src="./images/hoangdaoan.png" alt="hoangdaoan">
+            <p>Tokyo hoang dao an</p>
+            <p>Gia: 90000</p>
+            <button id="chonMua" onclick="addToCart('Tokyo hoang dao an', 90000)">Chon mua</button>
+        </div>
+    </div>
+
+    <div id="cart" class="hidden">
+        <table>
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Đơn giá</th>
+                    <th>SL</th>
+                    <th>Tiền</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="cartItems">
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Tổng tiền</td>
+                    <td id="totalAmount">0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

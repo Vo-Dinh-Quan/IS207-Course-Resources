@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Website Nhà Hàng - Câu 3</title>
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="./script.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            Thứ 2, 06/07/2020, 11:00 - Nhân viên: Nguyễn Văn A
+        </div>
+        <h3>THỰC ĐƠN</h3>
+        <table>
+            <tr>
+                <th>Bàn</th>
+                <th>Món ăn</th>
+            </tr>
+            <tr>
+                <td>
+                    <select id="tableSelect">
+                        <option value="1">Bàn 1</option>
+                        <option value="2">Bàn 2</option>
+                        <option value="3">Bàn 3</option>
+                    </select>
+                </td>
+                <td>
+                    <select id="foodSelect">
+                        <option value="20000">Bún bò - 20,000 đ</option>
+                        <option value="18000">Hủ tiếu - 18,000 đ</option>
+                        <option value="17000">Bánh canh - 17,000 đ</option>
+                        <option value="19000">Phở bò - 19,000 đ</option>
+                        <option value="15000">Nuôi - 15,000 đ</option>
+                        <option value="12000">Bánh mì thịt - 12,000 đ</option>
+                        <option value="15000">Bánh cuốn - 15,000 đ</option>
+                    </select>
+                    <button id="addItem">Thêm Món</button>
+                </td>
+            </tr>
+        </table>
+        <div id="tablesContainer">
+            <!-- Table details will be generated here -->
+        </div>
+    </body>
+</html>

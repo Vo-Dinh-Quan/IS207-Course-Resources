@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Phiếu đăng ký tour du lịch</title>
+        <style>
+            body {
+                background-color: white;
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                width: 700px;
+                margin: 0 auto;
+                background-color: #ffdd99;
+                border: 1px solid #000;
+                padding: 20px;
+            }
+            h2 {
+                text-align: center;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            td {
+                padding: 8px;
+                border: 1px solid #000;
+            }
+            td label {
+                color: blue;
+                font-weight: bold;
+            }
+            input[type="text"],
+            input[type="number"],
+            select,
+            textarea {
+                padding: 5px;
+                box-sizing: border-box;
+            }
+
+            #address,
+            textarea {
+                width: 90%;
+            }
+            .group-size input {
+                width: 50px;
+            }
+            input[type="submit"] {
+                padding: 5px 20px;
+                display: block;
+                margin: 0 auto;
+                background-color: #fff;
+                border: 1px solid #000;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Phiếu đăng ký tour du lịch</h2>
+            <form>
+                <table>
+                    <tr>
+                        <td><label for="name">Họ và tên khách</label></td>
+                        <td>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value="Nguyễn Văn A"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="address">Địa chỉ</label></td>
+                        <td>
+                            <input
+                                type="text"
+                                id="address"
+                                name="address"
+                                placeholder="abc, xyz, jqk"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="phone">Điện thoại</label></td>
+                        <td>
+                            <input
+                                type="text"
+                                id="phone"
+                                name="phone"
+                                placeholder="09xxxxxxxx"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="tour">Tour</label></td>
+                        <td>
+                            <select id="tour" name="tour">
+                                <option value="">Chọn tour</option>
+                                <option value="Hà Nội – Hạ Long – Tuần Châu">
+                                    Hà Nội – Hạ Long – Tuần Châu (10.000.000 đ)
+                                </option>
+                                <option value="Hà Nội – Sapa">
+                                    Hà Nội – Sapa (6.000.000 đ)
+                                </option>
+                                <option value="Đà Nẵng – Hội An">
+                                    Đà Nẵng – Hội An (3.000.000 đ)
+                                </option>
+                                <option value="Buôn Mê Thuột – Kon Tum">
+                                    Buôn Mê Thuột – Kon Tum (2.000.000 đ)
+                                </option>
+                                <option value="TP.HCM – Nha Trang">
+                                    TP.HCM – Nha Trang (3.500.000 đ)
+                                </option>
+                                <option value="TP.HCM – Cần Thơ – Cà Mau">
+                                    TP.HCM – Cần Thơ – Cà Mau (2.500.000 đ)
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="adults">Số lượng đoàn khách</label></td>
+                        <td class="group-size">
+                            Người lớn
+                            <input
+                                type="number"
+                                id="adults"
+                                name="adults"
+                                value="1"
+                                min="1"
+                            />
+                            Trẻ em
+                            <input
+                                type="number"
+                                id="children"
+                                name="children"
+                                value="0"
+                                min="0"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="notes">Ghi chú</label></td>
+                        <td>
+                            <textarea
+                                id="notes"
+                                name="notes"
+                                rows="5"
+                                placeholder="Nhập ghi chú"
+                            ></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Đăng ký" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

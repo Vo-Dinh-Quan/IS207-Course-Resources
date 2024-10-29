@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFACCA;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+form {
+    margin: 20px auto;
+    width: 400px;
+    background-color: #FFACCA;
+    padding: 10px;
+    border: 1px solid #000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 8px;
+    border: 1px solid #000;
+}
+
+input[type="text"], input[type="email"], input[type="file"], input[type="range"] {
+    width: 100%;
+    padding: 5px;
+}
+
+.skill {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#addSkill {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
