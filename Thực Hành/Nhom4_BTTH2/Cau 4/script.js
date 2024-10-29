@@ -1,51 +1,57 @@
-$(document).ready(function () {
-    $("#buyTicket").click(function () {
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("buyTicket").addEventListener("click", function () {
         const customerName = "Nguyễn Văn A";
-        const showDate = $("#showDate").val();
-        const movie = $("#movieSelect option:selected").text();
-        const showTimePrice = parseFloat($("#showTimeSelect").val());
-        const showTime = $("#showTimeSelect option:selected").data("time");
-        const roomPrice = parseFloat($("#roomSelect").val());
-        const room = $("#roomSelect option:selected").text();
-        const seats = $("#seatSelect").val();
 
-        if (showDate && movie !== "Phim" && showTime && room && seats.length > 0) {
-            const seatCount = seats.length;
+        // lấy ngày
+        const showDate = document.getElementById("showDate").value;
+
+        // lấy tên phim đã chọn
+        const movie =
+            document.getElementById("movieSelect").selectedOptions[0].text;
+
+        // lấy giá của suất chiếu đã chọn
+        const showTimeSelect = document.getElementById("showTimeSelect");
+        const showTimePrice = parseFloat(showTimeSelect.value);
+
+        // lấy khung giờ
+        const showTime = showTimeSelect.selectedOptions[0].text;
+
+        // lấy loại phòng và giá phòng
+        const roomSelect = document.getElementById("roomSelect");
+        const roomPrice = parseFloat(roomSelect.value);
+        const room = roomSelect.selectedOptions[0].text;
+
+        // lấy ghế được chọn
+        const seats = Array.from(
+            document.getElementById("seatSelect").selectedOptions
+        ).map((opt) => opt.value);
+
+        if (showDate && movie !== "Phim" && showTime && room && seats.length) {
             const ticketPrice = showTimePrice * roomPrice;
-            const totalPrice = seatCount * ticketPrice;
-            
+            const totalPrice = seats.length * ticketPrice;
+
             let ticketContent = `
-                <style>
-                    body { font-family: Arial, sans-serif; text-align: center; }
-                    .ticket-info { width: 300px; margin: auto; text-align: left; }
-                    .ticket-info .info-row { display: flex; justify-content: space-between; padding: 5px 0; }
-                    .ticket-info .header { font-weight: bold; font-size: 18px; text-align: center; margin-bottom: 10px; }
-                    .ticket-info table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-                    .ticket-info th, .ticket-info td { padding: 5px; text-align: left; }
-                    .ticket-info .total { font-weight: bold; text-align: right; }
-                </style>
                 <div class="ticket-info">
                     <p class="header">Thông tin vé</p>
-                    <div class="info-row"><span>Khách hàng:</span><span>${customerName}</span></div>
-                    <div class="info-row"><span>Ngày chiếu:</span><span>${showDate}</span></div>
-                    <div class="info-row"><span>Phim:</span><span>${movie}</span></div>
-                    <div class="info-row"><span>Suất chiếu:</span><span>${showTime}</span></div>
-                    <div class="info-row"><span>Phòng chiếu:</span><span>${room}</span></div>
+                    <div><span>Khách hàng:</span><span>${customerName}</span></div>
+                    <div><span>Ngày chiếu:</span><span>${showDate}</span></div>
+                    <div><span>Phim:</span><span>${movie}</span></div>
+                    <div><span>Suất chiếu:</span><span>${showTime}</span></div>
+                    <div><span>Phòng chiếu:</span><span>${room}</span></div>
                     <table>
                         <tr><th>Ghế</th><th>Giá Vé</th></tr>
-            `;
-            
-            seats.forEach(seat => {
-                ticketContent += `<tr><td>${seat}</td><td>${ticketPrice.toLocaleString()} đ</td></tr>`;
-            });
-            
-            ticketContent += `
+                        ${seats
+                            .map(
+                                (seat) =>
+                                    `<tr><td>${seat}</td><td>${ticketPrice.toLocaleString()} đ</td></tr>`
+                            )
+                        }
                         <tr><td colspan="2" class="total">Tổng tiền: ${totalPrice.toLocaleString()} đ</td></tr>
                     </table>
                 </div>
             `;
-            
-            const newWindow = window.open("", "_blank");
+
+            const newWindow = window.open();
             newWindow.document.write(ticketContent);
             newWindow.document.close();
         } else {
