@@ -1,135 +1,86 @@
-$(document).ready(function () {
-    // Thêm món vào bàn đã chọn
-    $("#addItem").click(function () {
-        const tableNum = $("#tableSelect").val();
-        const foodName = $("#foodSelect option:selected").text();
-        const foodPrice = parseInt($("#foodSelect").val());
+document.addEventListener("DOMContentLoaded", () => {
+    const updateTotal = (tableDiv) => {
+        const total = Array.from(tableDiv.querySelectorAll(".price"))
+            .reduce((sum, p) => sum + parseInt(p.textContent.replace(/,/g, "")), 0);
+        tableDiv.querySelector(".totalAmount").textContent = total.toLocaleString();
+    };
 
-        let $tableDiv = $("#table" + tableNum);
+    document.getElementById("addItem").addEventListener("click", () => {
+        const tableNum = document.getElementById("tableSelect").value.slice(-1);
+        const foodSelect = document.getElementById("foodSelect");
+        const foodName = foodSelect.selectedOptions[0].text;
+        const foodPrice = parseInt(foodSelect.value);
+        let tableDiv = document.getElementById("table" + tableNum);
 
-        if ($tableDiv.length === 0) {
-            $tableDiv = $(`
-                <div id="table${tableNum}">
-                    <h4>Bàn ${tableNum}</h4>
-                    <table class="orderTable" data-table="${tableNum}">
-                        <tr>
-                            <th>Món</th>
-                            <th>SL</th>
-                            <th>Tiền</th>
-                            <th>Xóa</th>
-                        </tr>
-                    </table>
-                    <div class="total">Tổng tiền: <span class="totalAmount">0</span> đ</div>
-                    <button class="printBill" data-table="${tableNum}">In hóa đơn</button>
-                </div>
-            `);
-            $("#tablesContainer").append($tableDiv);
-        }
-
-        const $existingRow = $tableDiv.find(`tr[data-food="${foodName}"]`);
-        if ($existingRow.length > 0) {
-            const quantity = $existingRow.find(".quantity");
-            const newQty = parseInt(quantity.val()) + 1;
-            quantity.val(newQty);
-            $existingRow
-                .find(".price")
-                .text((newQty * foodPrice).toLocaleString());
-        } else {
-            const newRow = `
-                <tr data-food="${foodName}">
-                    <td>${foodName}</td>
-                    <td><input type="number" class="quantity" value="1" min="1" data-price="${foodPrice}"></td>
-                    <td class="price">${foodPrice.toLocaleString()}</td>
-                    <td><button class="remove-btn">Xóa</button></td>
-                </tr>
+        if (!tableDiv) {
+            tableDiv = document.createElement("div");
+            tableDiv.id = "table" + tableNum;
+            tableDiv.innerHTML = `
+                <h4>Bàn ${tableNum}</h4>
+                <table class="orderTable"><tr><th>Món</th><th>SL</th><th>Tiền</th><th>Xóa</th></tr></table>
+                <div class="total">Tổng tiền: <span class="totalAmount">0</span> đ</div>
+                <button class="printBill">In hóa đơn</button>
             `;
-            $tableDiv.find(".orderTable").append(newRow);
+            document.getElementById("tablesContainer").appendChild(tableDiv);
         }
 
-        updateTotal($tableDiv);
+        const existingRow = tableDiv.querySelector(`tr[data-food="${foodName}"]`);
+        if (existingRow) {
+            const quantity = existingRow.querySelector(".quantity");
+            quantity.value = parseInt(quantity.value) + 1;
+            existingRow.querySelector(".price").textContent = (quantity.value * foodPrice).toLocaleString();
+        } else {
+            const row = document.createElement("tr");
+            row.setAttribute("data-food", foodName);
+            row.innerHTML = `
+                <td>${foodName}</td>
+                <td><input type="number" class="quantity" value="1" min="1" data-price="${foodPrice}"></td>
+                <td class="price">${foodPrice.toLocaleString()}</td>
+                <td><button class="remove-btn">Xóa</button></td>
+            `;
+            tableDiv.querySelector(".orderTable").appendChild(row);
+        }
+        updateTotal(tableDiv);
     });
 
-    // Cập nhật tổng khi thay đổi số lượng
-    $(document).on("input", ".quantity", function () {
-        const $row = $(this).closest("tr");
-        const quantity = parseInt($(this).val());
-        const unitPrice = $(this).data("price");
-        const totalPrice = quantity * unitPrice;
-        $row.find(".price").text(totalPrice.toLocaleString());
-
-        const $tableDiv = $(this).closest(".orderTable").parent();
-        updateTotal($tableDiv);
+    document.addEventListener("input", (e) => {
+        if (e.target.classList.contains("quantity")) {
+            const row = e.target.closest("tr");
+            row.querySelector(".price").textContent = (e.target.value * e.target.dataset.price).toLocaleString();
+            updateTotal(row.closest("div"));
+        }
     });
 
-    // Xóa món
-    $(document).on("click", ".remove-btn", function () {
-        const $tableDiv = $(this).closest(".orderTable").parent();
-        $(this).closest("tr").remove();
-        updateTotal($tableDiv);
+    document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("remove-btn")) {
+            const tableDiv = e.target.closest("div");
+            e.target.closest("tr").remove();
+            updateTotal(tableDiv);
+        }
+        if (e.target.classList.contains("printBill")) {
+            const tableDiv = e.target.closest("div");
+            const employeeName = "Nguyễn Văn A";
+            let billContent = `
+                <div style="text-align: center; font-family: Arial, sans-serif;">
+                    <h3>Hóa đơn</h3>
+                    <p>Ngày hóa đơn: ${new Date().toLocaleString("vi-VN")}</p>
+                    <p>Nhân viên: ${employeeName}</p>
+                    <p>Bàn: ${tableDiv.id.slice(-1)}</p>
+                    <table border="1" style="width: 100%; text-align: center;">
+                        <tr><th>Món</th><th>SL</th><th>Thành Tiền</th></tr>
+            `;
+            let total = 0;
+            tableDiv.querySelectorAll("tr[data-food]").forEach(row => {
+                const food = row.getAttribute("data-food");
+                const qty = row.querySelector(".quantity").value;
+                const price = row.querySelector(".price").textContent;
+                total += parseInt(price.replace(/,/g, ""));
+                billContent += `<tr><td>${food}</td><td>${qty}</td><td>${price} đ</td></tr>`;
+            });
+            billContent += `</table><p>Tổng tiền: ${total.toLocaleString()} đ</p></div>`;
+            const newWindow = window.open("", "_blank");
+            newWindow.document.write(billContent);
+            newWindow.document.close();
+        }
     });
-
-    // In hóa đơn
-    $(document).on("click", ".printBill", function () {
-        const tableNum = $(this).data("table");
-        const $tableDiv = $(`#table${tableNum}`);
-        const employeeName = "Nguyễn Văn A";
-        let billContent = `
-            <style>
-                body { font-family: Arial, sans-serif; text-align: center; }
-                .bill-container { width: 60%; margin: auto; text-align: left; }
-                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-                th, td { padding: 8px; text-align: center; }
-                .info-row { text-align: left; margin-top: 20px; }
-                .info-row span { font-weight: bold; display: inline-block; width: 100px; }
-                .total { font-weight: bold; text-align: center; font-size: 18px; margin-top: 20px; }
-                .total .total-amount { font-size: 20px; }
-                .title { font-size: 18px; font-weight: bold; text-align: center; }
-            </style>
-            <div class="bill-container">
-                <div class="title">Hóa đơn</div>
-                <div class="info-row"><span>Ngày hóa đơn:</span> ${new Date().toLocaleString(
-                    "vi-VN",
-                    {
-                        weekday: "long",
-                        day: "2-digit",
-                        month: "2-digit",
-                        year: "numeric",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                    }
-                )}</div>
-                <div class="info-row"><span>Nhân viên:</span> ${employeeName}</div>
-                <div class="info-row"><span>Bàn:</span> Số ${tableNum}</div>
-                <table>
-                    <tr><th>Món</th><th>SL</th><th>Thành Tiền</th></tr>
-        `;
-
-        let total = 0;
-        $tableDiv.find("tr[data-food]").each(function () {
-            const food = $(this).data("food");
-            const qty = $(this).find(".quantity").val();
-            const price = $(this).find(".price").text();
-            total += parseInt(price.replace(/,/g, ""));
-            billContent += `<tr><td>${food}</td><td>${qty}</td><td>${price} đ</td></tr>`;
-        });
-
-        billContent += `
-                </table>
-                <div class="total">Tổng tiền: <span class="total-amount">${total.toLocaleString()} đ</span></div>
-            </div>
-        `;
-
-        const newWindow = window.open();
-        newWindow.document.write(billContent);
-        newWindow.document.close();
-    });
-
-    // Cập nhật tổng tiền
-    function updateTotal($tableDiv) {
-        let total = 0;
-        $tableDiv.find(".price").each(function () {
-            total += parseInt($(this).text().replace(/,/g, ""));
-        });
-        $tableDiv.find(".totalAmount").text(total.toLocaleString());
-    }
 });
