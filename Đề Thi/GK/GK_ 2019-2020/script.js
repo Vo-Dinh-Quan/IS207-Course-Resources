@@ -35,7 +35,6 @@ function updateCart() {
         `;
         cartItems.appendChild(row);
     });
-
     document.getElementById("totalAmount").innerText = total;
 }
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="smartphoneList">
+                <div class="phone">
+                    <img src="./assets/iphone.png" alt="iphone" />
+                    <button
+                        class="addtoCart"
+                        onclick="addToCart('iphone 12', 24000000)"
+                    >
+                        Mua hang
+                    </button>
+                </div>
+                <div class="phone">
+                    <img src="./assets/samsung.png" alt="samsung" />
+                    <button
+                        class="addtoCart"
+                        onclick="addToCart('samsung s20', 12000000)"
+                    >
+                        Mua hang
+                    </button>
+                </div>
+                <div class="phone">
+                    <img src="./assets/oppo.png" alt="oppo" />
+                    <button
+                        class="addtoCart"
+                        onclick="addToCart('oppo reno6', 10000000)"
+                    >
+                        Mua hang
+                    </button>
+                </div>
+            </div>
+            <div class="cart">
+                <h3>Gio hang</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>San pham</th>
+                            <th>SL</th>
+                            <th>Don gia</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="cartItems"></tbody>
+                </table>
+            </div>
+
+            <button class="pay" onclick="payTotal()">Thanh toan</button>
+            <p >Tong tien: <span class="totalAmount"></span></p>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
