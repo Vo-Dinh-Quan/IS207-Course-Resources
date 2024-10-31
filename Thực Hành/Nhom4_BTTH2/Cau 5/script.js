@@ -1,29 +1,43 @@
-$(document).ready(function () {
-    function updateSubtotal(row) {
-        const quantity = parseInt(row.find('.quantity').val());
-        const price = parseInt(row.find('.price').val());
-        const subtotal = quantity * price;
-        row.find('.subtotal').text(subtotal.toLocaleString());
-        updateTotal();
-    }
+const cartTable = document.getElementById("cartTable");
 
-    function updateTotal() {
-        let total = 0;
-        $('.subtotal').each(function () {
-            total += parseInt($(this).text().replace(/,/g, ''));
-        });
-        $('#total').text(total.toLocaleString());
-    }
+// Hàm cập nhật thành tiền (subtotal) cho từng sản phẩm
+function updateSubtotal(row) {
+    const quantity = row.querySelector(".quantity").valueAsNumber || 1;
+    const price = parseInt(row.querySelector(".price").value) || 0;
+    const subtotal = quantity * price;
 
-    $('.quantity, .price').on('input', function () {
-        const row = $(this).closest('tr');
-        updateSubtotal(row);
-    });
-
-    $('.deleteBtn').click(function () {
-        $(this).closest('tr').remove();
-        updateTotal();
-    });
-
+    row.querySelector(".subtotal").textContent = subtotal;
     updateTotal();
+}
+
+// Hàm cập nhật tổng tiền (total) của toàn bộ giỏ hàng
+function updateTotal() {
+    // Tính tổng tiền từ tất cả các ô thành tiền (subtotal)
+    const total = Array.from(document.querySelectorAll(".subtotal")).reduce(
+        (sum, cell) => sum + parseInt(cell.textContent),
+        0
+    );
+
+    document.getElementById("total").textContent = total;
+}
+
+// Sự kiện khi người dùng nhập vào ô số lượng hoặc giá
+cartTable.addEventListener("input", (event) => {
+    if (
+        event.target.classList.contains("quantity") ||
+        event.target.classList.contains("price")
+    ) {
+        // Cập nhật thành tiền cho dòng chứa ô được thay đổi
+        updateSubtotal(event.target.closest("tr"));
+    }
 });
+
+// Sự kiện khi người dùng bấm nút xóa
+cartTable.addEventListener("click", (event) => {
+    if (event.target.classList.contains("deleteBtn")) {
+        event.target.closest("tr").remove();
+        updateTotal();
+    }
+});
+
+updateTotal();
