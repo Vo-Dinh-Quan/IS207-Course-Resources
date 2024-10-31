@@ -1,43 +1,32 @@
-$(document).ready(function () {
-    $("#registerBtn").click(function () {
-        const customerName = $("#customerName").val();
-        const address = $("#address").val();
-        const phone = $("#phone").val();
-        const tourPrice = parseFloat($("#tourSelect").val());
-        const tourName = $("#tourSelect option:selected").text();
-        const adultCount = parseInt($("#adultCount").val());
-        const childCount = parseInt($("#childCount").val());
-        const note = $("#note").val();
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("registerBtn").addEventListener("click", () => {
+        const customerName = document.getElementById("customerName").value;
+        const address = document.getElementById("address").value;
+        const phone = document.getElementById("phone").value;
+        const tourSelect = document.getElementById("tourSelect");
+        const tourPrice = parseFloat(tourSelect.value);
+        const tourName = tourSelect.options[tourSelect.selectedIndex].text;
+        const adultCount = parseInt(document.getElementById("adultCount").value);
+        const childCount = parseInt(document.getElementById("childCount").value);
+        const note = document.getElementById("note").value;
 
         if (tourPrice > 0 && customerName && address && phone) {
             const adultTotal = adultCount * tourPrice;
             const childTotal = childCount * (tourPrice / 2);
             const total = adultTotal + childTotal;
 
-            let bookingContent = `
-                <style>
-                    body { font-family: Arial, sans-serif; }
-                    .booking-info { width: 400px; margin: auto; }
-                    .booking-info .header { font-weight: bold; font-size: 18px; text-align: center; margin-bottom: 10px; }
-                    .booking-info table { width: 100%; border-collapse: collapse; }
-                    .booking-info th, .booking-info td { padding: 5px; text-align: left; }
-                    .booking-info .label { width: 40%; font-weight: bold; }
-                    .booking-info .total { font-weight: bold; text-align: right; }
-                </style>
+            const bookingContent = `
                 <div class="booking-info">
                     <p class="header">Thông tin đăng ký</p>
                     <table>
-                        <tr><td class="label">Ngày đăng ký:</td><td>${new Date().toLocaleString(
-                            "vi-VN",
-                            {
-                                weekday: "long",
-                                day: "2-digit",
-                                month: "2-digit",
-                                year: "numeric",
-                                hour: "2-digit",
-                                minute: "2-digit",
-                            }
-                        )}</td></tr>
+                        <tr><td class="label">Ngày đăng ký:</td><td>${new Date().toLocaleString("vi-VN", {
+                            weekday: "long",
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                        })}</td></tr>
                         <tr><td class="label">Nhân viên:</td><td>Họ tên nhân viên</td></tr>
                         <tr><td class="label">Họ tên khách:</td><td>${customerName}</td></tr>
                         <tr><td class="label">Địa chỉ:</td><td>${address}</td></tr>
@@ -49,9 +38,7 @@ $(document).ready(function () {
                     <table>
                         <tr><th>SL</th><th>Đơn giá</th><th>Thành Tiền</th></tr>
                         <tr><td>Người lớn (${adultCount})</td><td>${tourPrice.toLocaleString()} đ</td><td>${adultTotal.toLocaleString()} đ</td></tr>
-                        <tr><td>Trẻ em (${childCount})</td><td>${(
-                tourPrice / 2
-            ).toLocaleString()} đ</td><td>${childTotal.toLocaleString()} đ</td></tr>
+                        <tr><td>Trẻ em (${childCount})</td><td>${(tourPrice / 2).toLocaleString()} đ</td><td>${childTotal.toLocaleString()} đ</td></tr>
                         <tr><td colspan="3" class="total">Tổng tiền: ${total.toLocaleString()} đ</td></tr>
                     </table>
                 </div>

@@ -1,84 +1,62 @@
 <!DOCTYPE html>
 <html lang="vi">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Mua Vé Xem Phim</title>
-        <link rel="stylesheet" href="styles.css" />
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <h2>Mua vé</h2>
-        <form id="ticketForm">
-            <table>
-                <tr>
-                    <td>Ngày chiếu</td>
-                    <td>
-                        <input
-                            type="text"
-                            id="showDate"
-                            placeholder="dd / mm / yyyy"
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Phim</td>
-                    <td>
-                        <select id="movieSelect">
-                            <option value="0">Phim</option>
-                            <option>Yêu em bất chấp</option>
-                            <option>Tháng năm rực rỡ</option>
-                            <option>Và em sẽ đến</option>
-                            <option>Chuyện ma lúc 3 giờ sáng</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Suất chiếu</td>
-                    <td>
-                        <select id="showTimeSelect">
-                            <option value="0">Suất chiếu</option>
-                            <option value="45000">
-                                9h - 12h
-                            </option>
-                            <option value="45000"">
-                                13h - 16h
-                            </option>
-                            <option value="55000"">
-                                17h - 20h
-                            </option>
-                            <option value="35000">
-                                22h - 2h
-                            </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Phòng chiếu</td>
-                    <td>
-                        <select id="roomSelect">
-                            <option value="0">Phòng chiếu</option>
-                            <option value="1.0">Đồng</option>
-                            <option value="1.2">Bạc</option>
-                            <option value="1.5">Vàng</option>
-                            <option value="2.0">Kim Cương</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Chọn chỗ ngồi</td>
-                    <td>
-                        <select id="seatSelect" multiple>
-                            <option>Ghế 01</option>
-                            <option>Ghế 02</option>
-                            <option>Ghế 03</option>
-                            <option>Ghế 04</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
-            <button type="button" id="buyTicket">Mua vé</button>
-        </form>
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mua Vé Xem Phim</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h2>Mua vé</h2>
+    <form id="ticketForm">
+        <table>
+            <tr><td>Ngày chiếu</td><td><input type="text" id="showDate" placeholder="dd / mm / yyyy" /></td></tr>
+            <tr><td>Phim</td>
+                <td>
+                    <select id="movieSelect">
+                        <option value="0">Phim</option>
+                        <option>Yêu em bất chấp</option>
+                        <option>Tháng năm rực rỡ</option>
+                        <option>Và em sẽ đến</option>
+                        <option>Chuyện ma lúc 3 giờ sáng</option>
+                    </select>
+                </td>
+            </tr>
+            <tr><td>Suất chiếu</td>
+                <td>
+                    <select id="showTimeSelect">
+                        <option value="0">Suất chiếu</option>
+                        <option value="45000">9h - 12h</option>
+                        <option value="45000">13h - 16h</option>
+                        <option value="55000">17h - 20h</option>
+                        <option value="35000">22h - 2h</option>
+                    </select>
+                </td>
+            </tr>
+            <tr><td>Phòng chiếu</td>
+                <td>
+                    <select id="roomSelect">
+                        <option value="0">Phòng chiếu</option>
+                        <option value="1.0">Đồng</option>
+                        <option value="1.2">Bạc</option>
+                        <option value="1.5">Vàng</option>
+                        <option value="2.0">Kim Cương</option>
+                    </select>
+                </td>
+            </tr>
+            <tr><td>Chọn chỗ ngồi</td>
+                <td>
+                    <select id="seatSelect" multiple>
+                        <option>Ghế 01</option>
+                        <option>Ghế 02</option>
+                        <option>Ghế 03</option>
+                        <option>Ghế 04</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="button" id="buyTicket">Mua vé</button>
+    </form>
+</body>
 </html>
