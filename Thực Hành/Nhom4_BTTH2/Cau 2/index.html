@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Thực Đơn</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 400px;
+            background-color: #ffff66;
+        }
+        #hoaDon table {
+            background-color: #99ffff;
+            width: 300px;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
-    <table border="1" style="border-collapse: collapse; background-color: #FFFF66; width: 400px;">
+    <table>
         <tr>
             <th colspan="3">THỰC ĐƠN</th>
         </tr>
@@ -17,91 +32,67 @@
         </tr>
         <tr>
             <td>
-                <select id="thucAn" multiple style="width: 100px;">
-                    <option value="Bún bò">Bún bò</option>
-                    <option value="Hủ tiếu">Hủ tiếu</option>
-                    <option value="Bánh canh">Bánh canh</option>
-                    <option value="Phở bò">Phở bò</option>
-                    <option value="Nuôi">Nuôi</option>
-                    <option value="Bánh mì thịt">Bánh mì thịt</option>
-                    <option value="Bánh cuốn">Bánh cuốn</option>
+                <select id="thucAn" multiple style="width: 100px">
+                    <option value="20000">Bún bò</option>
+                    <option value="18000">Hủ tiếu</option>
+                    <option value="17000">Bánh canh</option>
+                    <option value="19000">Phở bò</option>
+                    <option value="15000">Nuôi</option>
+                    <option value="12000">Bánh mì thịt</option>
+                    <option value="15000">Bánh cuốn</option>
                 </select>
             </td>
             <td>
-                <select id="nuocUong" multiple style="width: 100px;">
-                    <option value="Cà phê đá">Cà phê đá</option>
-                    <option value="Cà phê sữa đá">Cà phê sữa đá</option>
-                    <option value="Chanh dây">Chanh dây</option>
-                    <option value="Chanh muối">Chanh muối</option>
-                    <option value="Xí muội">Xí muội</option>
-                    <option value="Sữa tươi">Sữa tươi</option>
-                    <option value="Cam vắt">Cam vắt</option>
+                <select id="nuocUong" multiple style="width: 100px">
+                    <option value="12000">Cà phê đá</option>
+                    <option value="15000">Cà phê sữa đá</option>
+                    <option value="13000">Chanh dây</option>
+                    <option value="12000">Chanh muối</option>
+                    <option value="14000">Xí muội</option>
+                    <option value="13000">Sữa tươi</option>
+                    <option value="17000">Cam vắt</option>
                 </select>
             </td>
             <td>
-                <input type="radio" name="thoiDiem" value="Ban ngày" checked> Ban ngày<br>
-                <input type="radio" name="thoiDiem" value="Ban đêm"> Ban đêm
+                <input type="radio" name="thoiDiem" value="Ban ngày" checked /> Ban ngày<br />
+                <input type="radio" name="thoiDiem" value="Ban đêm" /> Ban đêm
             </td>
         </tr>
         <tr>
-            <td colspan="3" style="text-align: center;">
+            <td colspan="3" style="text-align: center">
                 <button id="tinhTien">Tính tiền</button>
             </td>
         </tr>
     </table>
 
-    <div id="hoaDon" style="margin-top: 20px;"></div>
+    <div id="hoaDon" style="margin-top: 20px"></div>
 
     <script>
-        $(document).ready(function(){
-            const giaThucAn = {
-                "Bún bò": 20000,
-                "Hủ tiếu": 18000,
-                "Bánh canh": 17000,
-                "Phở bò": 19000,
-                "Nuôi": 15000,
-                "Bánh mì thịt": 12000,
-                "Bánh cuốn": 15000
-            };
+        document.getElementById("tinhTien").addEventListener("click", () => {
+            let tongTien = 0;
+            let hoaDonHTML = "<table><tr><th>Các món đã dùng</th><th>Tiền</th></tr>";
 
-            const giaNuocUong = {
-                "Cà phê đá": 12000,
-                "Cà phê sữa đá": 15000,
-                "Chanh dây": 13000,
-                "Chanh muối": 12000,
-                "Xí muội": 14000,
-                "Sữa tươi": 13000,
-                "Cam vắt": 17000
-            };
-
-            $('#tinhTien').click(function(){
-                let tongTien = 0;
-                let hoaDonHTML = '<table border="1" style="background-color: #99FFFF; width: 300px;">';
-                hoaDonHTML += '<tr><th>Các món đã dùng</th><th>Tiền</th></tr>';
-
-                $('#thucAn option:selected').each(function(){
-                    let mon = $(this).val();
-                    let gia = giaThucAn[mon];
+            // Hàm tính tiền và cập nhật hóa đơn cho từng loại
+            function tinhTienLoai(selectElement) {
+                Array.from(selectElement.selectedOptions).forEach((opt) => {
+                    let gia = parseInt(opt.value);
                     tongTien += gia;
-                    hoaDonHTML += `<tr><td>${mon}</td><td>${gia.toLocaleString()}</td></tr>`;
+                    hoaDonHTML += `<tr><td>${opt.text}</td><td>${gia.toLocaleString()}</td></tr>`;
                 });
+            }
 
-                $('#nuocUong option:selected').each(function(){
-                    let mon = $(this).val();
-                    let gia = giaNuocUong[mon];
-                    tongTien += gia;
-                    hoaDonHTML += `<tr><td>${mon}</td><td>${gia.toLocaleString()}</td></tr>`;
-                });
+            // Tính tiền cho thức ăn và nước uống
+            tinhTienLoai(document.getElementById("thucAn"));
+            tinhTienLoai(document.getElementById("nuocUong"));
 
-                if ($('input[name="thoiDiem"]:checked').val() === 'Ban đêm') {
-                    tongTien *= 1.1;
-                }
+            // Thêm phụ phí nếu chọn "Ban đêm"
+            if (document.querySelector('input[name="thoiDiem"]:checked').value === "Ban đêm") {
+                tongTien *= 1.1;
+            }
 
-                hoaDonHTML += `<tr><td><strong>Tổng tiền</strong></td><td><strong>${tongTien.toLocaleString()} đồng</strong></td></tr>`;
-                hoaDonHTML += '</table>';
-                
-                $('#hoaDon').html(hoaDonHTML);
-            });
+            hoaDonHTML += `<tr><td><strong>Tổng tiền</strong></td><td><strong>${tongTien.toLocaleString()} đồng</strong></td></tr></table>`;
+
+            document.getElementById("hoaDon").innerHTML = hoaDonHTML;
         });
     </script>
 </body>

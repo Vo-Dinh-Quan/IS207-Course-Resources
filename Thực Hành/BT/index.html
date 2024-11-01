@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Thông Tin Liên Hệ Nhóm</title>
+<style>
+    .container {
+        width: 480px;
+        margin: auto;
+        border: 2px solid darkcyan;
+        padding: 20px;
+        font-size: 22px;
+    }
+    h2 {
+        color: red;
+        text-align: center;
+    }
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 15px;
+    }
+    input[type="text"], select, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        box-sizing: border-box;
+    }
+    .button-group {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 20px;
+    }
+    .button-group button {
+        width: 150px;
+        padding: 10px;
+        background-color: darkorange;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .button-group button:hover {
+        opacity: 0.8;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>THÔNG TIN LIÊN HỆ NHÓM</h2>
+    <form action="GroupInfo.php" method="post">
+        <label for="ten_nhom">Tên nhóm</label>
+        <input type="text" id="ten_nhom" name="ten_nhom" placeholder="Nhập tên của nhóm bạn">
+
+        <label for="nhom_truong">Nhóm trưởng</label>
+        <input type="text" id="nhom_truong" name="nhom_truong" placeholder="Nhập họ tên của người nhóm trưởng">
+
+        <label for="website">Trang web giới thiệu dự án của nhóm</label>
+        <input type="text" id="website" name="website" placeholder="Nhập địa chỉ trang web nhóm">
+
+        <label for="nen_tang">Nền tảng</label>
+        <select id="nen_tang" name="nen_tang">
+            <option value="wordpress">Wordpress</option>
+            <option value="google">Google</option>
+            <option value="wix">Wix</option>
+            <option value="github">Github</option>
+            <option value="khac">Khác</option>
+        </select>
+
+        <label for="dia_chi">Địa chỉ</label>
+        <input type="text" id="dia_chi" name="dia_chi" placeholder="Nhập địa chỉ trang web nhóm">
+
+        <label for="y_kien">Ý kiến khác của nhóm</label>
+        <textarea id="y_kien" name="y_kien" rows="4" placeholder="Nhập ý kiến khác của nhóm"></textarea>
+
+        <div class="button-group">
+            <button type="submit">Submit</button>
+            <button type="button" onclick="location.reload();">Cancel</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
